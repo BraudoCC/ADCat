@@ -1,2 +1,2 @@
 # ADCat
-ADCAT：Anomaly Detection Cross All Tabular
+ADCat：Anomaly Detection Cross All Tabular
