@@ -1,0 +1,999 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ADCat-首页</title>
+	<!-- responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- master stylesheet -->
+	<link rel="stylesheet" href="/static/css/style.css">
+	<!-- Responsive stylesheet -->
+	<link rel="stylesheet" href="/static/css/responsive.css">
+    <!--Color Switcher Mockup-->
+    <link rel="stylesheet" href="/static/css/color-switcher-design.css">
+    <!--Color Themes-->
+    <link rel="stylesheet" href="/static/css/color-themes/default-theme.css" id="theme-color-file">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/180.png">
+    <link rel="icon" type="image/png" href="/static/images/favicon/32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/static/images/favicon/16.png" sizes="16x16">
+
+    <!-- Fixing Internet Explorer-->
+        <script src="/static/js/html5shiv.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+<div class="boxed_wrapper">
+
+<div class="preloader"></div> 
+
+<!-- Start Top Bar style1 -->  
+<section class="top-bar-style2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="top-bar clearfix">
+                    <ul class="topmenu float-left">
+                        <li><a href="#">专业版</a></li>
+                        <li><a href="#">个人版</a></li>
+                        <li><a href="#">企业版</a></li>
+                    </ul>
+                    <div class="top-right-v2 float-right">
+                        <ul>
+                        {% if request.session.is_login %}
+
+                            <li >{{ request.session.user_email }}</li>
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="{% url 'logout' %}">退出</a></li>
+
+                        {% else %}
+                            <li><a href="{% url 'login' %}">登录</a></li>
+                            <li><a href="{% url 'register' %}">注册</a></li>
+
+                        {% endif %}
+                        </ul>
+                        <div class="language-switcher float-right">
+                            <div id="polyglotLanguageSwitcher">
+                                <form action="#">
+                                    <select id="polyglot-language-options">
+                                        <option id="en" value="en" selected>EN</option>
+                                        <option id="ch" value="ch">CN</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>    
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Top Bar style1 -->  
+ 
+<!--Start header style2 area-->
+<header class="header-style2-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="inner-content clearfix">
+                    <div class="header-style2-logo float-left">
+                        <a href="{% url 'home' %}">
+                            <img src="/static/images/resources/logo_60.png" alt="Awesome Logo">
+                        </a>
+                    </div>   
+                    <div class="headers2-header-right float-right">
+                        <ul>
+                            <li>
+                                <div class="single-item">
+                                    <p><span class="flaticon-global"></span>地址</p>
+                                    <span>Yangpu District, Shanghai</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="single-item">
+                                    <h3>联系方式<span>+(86)134 6173 7001</span></h3>
+                                </div>
+                            </li>
+                        </ul>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+</header>  
+<!--End header style2 area-->
+  
+<!--Start mainmenu area style2-->
+<section class="mainmenu-area style2 stricky">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content clearfix">
+                    <nav class="main-menu clearfix">
+                        <div class="navbar-header clearfix">   	
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li><a href="{% url 'home' %}">首页</a></li>
+                                <li class="dropdown"><a href="{% url 'home' %}">异常检测</a>
+                                    <ul>
+                                        <li><a href="{% url 'adbench' %}">ADBench</a></li>
+                                        <li><a href="{% url 'adgym' %}">ADGym</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'service1' %}">在线训练</a></li>
+                                <li class="dropdown"><a href="{% url 'unsupervised' %}">算法介绍</a>
+                                    <ul>
+                                        <li><a href="{% url 'unsupervised' %}">无监督算法</a></li>
+                                        <li><a href="{% url 'semi-supervised' %}">半监督算法</a></li>
+                                        <li><a href="{% url 'supervised' %}">有监督算法</a></li>
+                                    </ul>
+                                </li>
+                               <li><a href="{% url 'contact' %}">联系我们</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>                 
+<!--End mainmenu area style2-->                 
+    
+<!--Main Slider-->
+<section class="main-slider">
+    <div class="rev_slider_wrapper fullwidthbanner-container"  id="rev_slider_two_wrapper" data-source="gallery">
+        <div class="rev_slider fullwidthabanner" id="rev_slider_two" data-version="5.4.1">
+            <ul>
+                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1687" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/bg-2.png" data-title="Slide Title" data-transition="parallaxvertical">
+
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/static/images/slides/bg-2.png">
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','500','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-80','-90','-100','-110']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content left-slide">
+                            <div class="big-title">
+                                <span>ADCat</span><br>基于人工智能的大数据异常检测系统<br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-width="['700','700','500','290']"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['40','30','-10','-30']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content left-slide">
+                            <div class="text">ADCat, Anomaly Detection Cross All Tabular</div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption tp-resizeme"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','500','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['125','110','70','80']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+{#                        <div class="slide-content left-slide">#}
+{#                            <div class="btn-box">#}
+{#                                <a class="btn-one sb1" href="{% url 'adbench' %}"> 立即开始检测 <span class="flaticon-next"></span></a>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </li>
+
+
+                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/bg-4.png" data-title="Slide Title" data-transition="parallaxvertical">
+
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/static/images/slides/bg-4.png">
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','500','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-80','-90','-100','-110']"
+                    data-x="['right','right','right','right']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content">
+                            <div class="big-title">
+                                为各行各业提供<br><span>高效且易于使用的</span><br>数据分析解决方案
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-width="['700','700','500','290']"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['40','30','-10','-30']"
+                    data-x="['right','right','right','right']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content">
+                            <div class="text">集成了数据分析、增强、模型构建、训练及可解释性分析等多模块，特别适合于无人工智能背景的业务人员使用.</div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption tp-resizeme"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','500','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['125','110','70','80']"
+                    data-x="['right','right','right','right']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+{#                        <div class="slide-content">#}
+{#                            <div class="btn-box">#}
+{#                                <a class="btn-one sb1" href="{% url 'adbench' %}"> 立即开始检测 <span class="flaticon-next"></span></a>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </li>
+
+
+                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1688" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/bg-5.png" data-title="Slide Title" data-transition="parallaxvertical">
+
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/static/images/slides/bg-5.png">
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','600','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['-80','-90','-100','-110']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content left-slide">
+                            <div class="big-title clr-white">
+                                结合<span>顶级人工智能会议论文</span><br>支持的</br>ADBench和ADGym技术
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-width="['700','700','700','290']"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['40','30','-10','-30']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+                        <div class="slide-content left-slide">
+                            <div class="text clr-white">强调在异常检测中的可解释性和用户友好性.</div>
+                        </div>
+                    </div>
+
+                    <div class="tp-caption tp-resizeme"
+                    data-paddingbottom="[0,0,0,0]"
+                    data-paddingleft="[0,0,0,0]"
+                    data-paddingright="[0,0,0,0]"
+                    data-paddingtop="[0,0,0,0]"
+                    data-responsive_offset="on"
+                    data-type="text"
+                    data-height="none"
+                    data-width="['700','700','700','290']"
+                    data-whitespace="normal"
+                    data-hoffset="['15','15','15','15']"
+                    data-voffset="['125','110','70','80']"
+                    data-x="['left','left','left','left']"
+                    data-y="['middle','middle','middle','middle']"
+                    data-textalign="['top','top','top','top']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7; white-space: nowrap;text-transform:left;">
+{#                        <div class="slide-content left-slide">#}
+{#                            <div class="btn-box">#}
+{#                                <a class="btn-one sb1" href="{% url 'adbench' %}"> 立即开始检测 <span class="flaticon-next"></span></a>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Main Slider-->
+
+<!--Start Call To Action area-->
+<section class="call-to-action-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="callto-action">
+                    <ul>
+                        <li class="single-box">
+                            <div class="icon-holder">
+                                <span class="flaticon-snow"></span>
+                            </div>
+                            <div class="inner">
+                                <h3>初级版</h3>
+                                <p>面向非专业者和业余人员</p>
+                                <p>即使您不了解具体算法内容和区别，也可以在线迅速完成对模型的训练</p>
+                                <a class="btn-two" href="{% url 'service1' %}">在线训练模型<span class="flaticon-next"></span></a>
+                            </div>
+                        </li>
+                        <li class="single-box">
+                            <div class="icon-holder">
+                                <span class="flaticon-heat"></span>
+                            </div>
+                            <div class="inner">
+                                <h3>进阶版</h3>
+                                <p>面向专业者和从业人员</p>
+                                <p>可以自由选择不同算法</p>
+                                <a class="btn-two" href="{% url 'adbench' %}">开始异常检测<span class="flaticon-next"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Call To Action area-->
+
+<!--Start Service Style2 Area-->
+<section class="services-style2-area" style="background-image: url(images/parallax-background/service-bg.jpg);">
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="inner clr2"><span class="clr2">产品介绍</span></div>
+            <div class="title">功能特点</div>
+            <p>基于人工智能的跨行业异常检测系统的独特优势</p>
+        </div>
+        <div class="row">
+            <!--Start single service style1-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-service-style2 text-center">
+                    <div class="icon-holder">
+                        <span class="flaticon-pc"></span>
+                        <div class="overlay-content">
+                            <div class="box">
+                                <div class="content">
+                                    <div class="inner-content">
+                                        <div class="img-holder">
+                                            <img src="/static/images/services/1.jpg" alt="Awesome Image">
+                                        </div>
+                                        <div class="text-holder">
+                                            <p>ADCat集成了30种机器学习和深度学习算法模型，涵盖了无监督、弱监督和有监督学习;配备57个常用异常检测数据集.</p>
+<!--                                            <a class="btn-two info" href="#">More Info<span class="flaticon-next"></span></a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title-holder">
+                        <h3><a href="{% url 'adbench' %}">广泛的算法模型库与数据集支持</a></h3>
+                    </div>
+                </div>
+            </div>
+            <!--End single service style1-->
+            
+            <!--Start single service style1-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-service-style2 text-center">
+                    <div class="icon-holder">
+                        <span class="flaticon-monitor"></span>  
+                        <div class="overlay-content">
+                            <div class="box">
+                                <div class="content">
+                                    <div class="inner-content">
+                                        <div class="img-holder">
+                                            <img src="/static/images/services/2.jpg" alt="Awesome Image">
+                                        </div>
+                                        <div class="text-holder">
+                                            <p>ADCat的数据驱动特性意味着它不受限于特定行业的业务逻辑，应用范围更广泛。低代码平台的设计降
+                                                低了技术门槛，使非专业人士也能轻松上手.</p>
+<!--                                            <a class="btn-two info" href="#">More Info<span class="flaticon-next"></span></a>-->
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="title-holder">
+                        <h3><a href="#">数据驱动的自动化构建流程</a></h3>
+                    </div>    
+                </div>     
+            </div>
+            <!--End single service style1-->
+            
+            <!--Start single service style1-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-service-style2 text-center">
+                    <div class="icon-holder">
+                        <span class="flaticon-laptop"></span>  
+                        <div class="overlay-content">
+                            <div class="box">
+                                <div class="content">
+                                    <div class="inner-content">
+                                        <div class="img-holder">
+                                            <img src="/static/images/services/3.jpg" alt="Awesome Image">
+                                        </div>
+                                        <div class="text-holder">
+                                            <p>提供的可解释性分析模块，包括基于统计指标和注意力机制的聚类方法，不仅帮助用户识别异常数据，还能理解异常发生的原因.</p>
+<!--                                            <a class="btn-two info" href="#">More Info<span class="flaticon-next"></span></a>-->
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="title-holder">
+                        <h3><a href="#">异常数据的可解释性分析</a></h3>
+                    </div>
+                </div>     
+            </div>
+            <!--End single service style1-->
+            
+        </div> 
+    </div>
+</section>
+<!--End Service style2 area-->
+
+
+<!--Start services process area-->
+<section class="services-process-area">
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="inner clr2"><span class="clr2">ADBench的使用说明</span></div>
+            <div class="title clr2">对您的数据构建异常检测模型</div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="service-process-content">
+                   
+                    <!--Start single box-->
+                    <div class="single-box">
+                        <div class="single-service-process float-left">
+                            <div class="inner-content text-right">
+                                <h3><a href="#">上传数据</a></h3>
+                                <p>我们支持：xlsx; csv; json; txt...等数据格式.</p>
+                            </div>
+                            <div class="icon-holder">
+                                <div class="icon">
+                                    <span class="flaticon-hand-1"></span>
+                                </div> 
+                                <div class="count">
+                                    <h4>1</h4>
+                                </div>   
+                            </div>    
+                        </div>
+                    </div>
+                    <!--Start single box-->
+                    
+                    <!--Start single box-->
+                    <div class="single-box">
+                        <div class="single-service-process right float-right">
+                            <div class="inner-content right float-right text-left">
+                                <h3><a href="#">选择算法</a></h3>
+                                <p> 模型备选库中有来自无监督算法、半监督算法和监督算法的30种模型供您选择.</p>
+                            </div>
+                            <div class="icon-holder left">
+                                <div class="icon">
+                                    <span class="flaticon-monitor"></span>
+                                </div> 
+                                <div class="count">
+                                    <h4>2</h4>
+                                </div>   
+                            </div>    
+                        </div>
+                    </div>
+                    <!--Start single box-->
+                    
+                    <!--Start single box-->
+                    <div class="single-box">
+                        <div class="single-service-process last-child float-left">
+                            <div class="inner-content text-right">
+                                <h3><a href="#">查看结果</a></h3>
+                                <p> 我们会输出您的数据的score,回归分析，异常数据显示和原因分析等结果，以表方式呈现.</p>
+                            </div>
+                            <div class="icon-holder">
+                                <div class="icon">
+                                    <span class="flaticon-hand"></span>
+                                </div> 
+                                <div class="count">
+                                    <h4>3</h4>
+                                </div>   
+                            </div>    
+                        </div>
+                    </div>
+                    <!--Start single box-->
+                    
+                </div>
+            </div>
+        </div> 
+        
+    </div>
+</section>
+<!--End services process area-->
+
+
+<!--Start fact counter area-->
+<section class="fact-counter-area" style="background-image: url(/static/images/parallax-background/fact-counter-bg.jpg);">
+    <div class="container">
+       
+        <div class="sec-title text-center">
+            <div class="inner clr2"><span class="clr2">产品优势</span></div>
+            <div class="title clr2">海量模型和数据集支持</div>
+        </div>
+        
+        <div class="row">
+            <!--Start single fact counter-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-fact-counter text-center">
+                    <div class="count-box">
+                        <div class="icon">
+                            <span class="flaticon-wrench-1"></span>    
+                        </div>
+                        <h1>
+                            <span class="timer" data-from="1" data-to="30" data-speed="5000" data-refresh-interval="50">3500</span>
+                            <img class="plus" src="/static/images/icon/plus-icon.png" alt="Plus Icon">
+                        </h1>
+                        <div class="title">
+                            <h3>算法模型</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single fact counter-->
+            <!--Start single fact counter-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-fact-counter text-center">
+                    <div class="count-box">
+                        <div class="icon">
+                            <span class="flaticon-warehouse"></span>    
+                        </div>
+                        <h1>
+                            <span class="timer" data-from="1" data-to="57" data-speed="5000" data-refresh-interval="50">15</span>
+                            <img class="plus" src="/static/images/icon/plus-icon.png" alt="Plus Icon">
+                        </h1>
+                        <div class="title">
+                            <h3>常检测数据集</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single fact counter-->
+            <!--Start single fact counter-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-fact-counter text-center">
+                    <div class="count-box">
+                        <div class="icon">
+                            <span class="flaticon-review"></span>    
+                        </div>
+                        <h1>
+                            <span class="timer" data-from="1" data-to="10" data-speed="5000" data-refresh-interval="50">2847</span>
+                            <img class="plus" src="/static/images/icon/plus-icon.png" alt="Plus Icon">
+                        </h1>
+                        <div class="title">
+                            <h3>无限制行业</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single fact counter-->
+        </div>
+        
+    </div>
+</section>
+<!--End fact counter area-->
+
+
+<!--&lt;!&ndash;Start latest blog area&ndash;&gt;-->
+<!--<section class="latest-blog-area style2">-->
+<!--    <div class="container inner-content">-->
+<!--       -->
+<!--        <div class="sec-title text-center">-->
+<!--            <div class="inner clr2"><span class="clr2">News</span></div>-->
+<!--            <div class="title clr2">Latest from our blog</div>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="row">-->
+<!--            &lt;!&ndash;Start single blog post&ndash;&gt;-->
+<!--            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">-->
+<!--                <div class="single-blog-post style2 text-center">-->
+<!--                    <div class="img-holder">-->
+<!--                        <img src="../statics/images/blog/lat-blog-v2-1.jpg" alt="Awesome Image">-->
+<!--                        <div class="date-box">-->
+<!--                            <span>15.08.2018</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="text-holder">-->
+<!--                        <h3 class="blog-title"><a href="blog-single.html">How to Care for an External Hard Drive for PC</a></h3>   -->
+<!--                        <div class="meta-box">-->
+<!--                            <ul class="meta-info">-->
+<!--                                <li><a href="#">By iFixFast in <span>Tips & Idea</span></a></li>-->
+<!--                            </ul>    -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="overlay-style-one">-->
+<!--                        <div class="box">-->
+<!--                            <div class="content">-->
+<!--                                <p>How this mistaken idea denouncing pleasure praising pain was born get some will give you complete account of that system and expound.</p>-->
+<!--                                <a class="btn-two readmore" href="#">Read More<span class="flaticon-next"></span></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;End single blog post&ndash;&gt;-->
+<!--            &lt;!&ndash;Start single blog post&ndash;&gt;-->
+<!--            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">-->
+<!--                <div class="single-blog-post style2 text-center">-->
+<!--                    <div class="img-holder">-->
+<!--                        <img src="../statics/images/blog/lat-blog-v2-2.jpg" alt="Awesome Image">-->
+<!--                        <div class="date-box">-->
+<!--                            <span>13.08.2018</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="text-holder">-->
+<!--                        <h3 class="blog-title"><a href="blog-single.html">Screen Time for Kids and Digital Technology.</a></h3>   -->
+<!--                        <div class="meta-box">-->
+<!--                            <ul class="meta-info">-->
+<!--                                <li><a href="#">By iFixFast in <span>Tips & Idea</span></a></li>-->
+<!--                            </ul>    -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="overlay-style-one">-->
+<!--                        <div class="box">-->
+<!--                            <div class="content">-->
+<!--                                <p>How this mistaken idea denouncing pleasure praising pain was born get some will give you complete account of that system and expound.</p>-->
+<!--                                <a class="btn-two readmore" href="#">Read More<span class="flaticon-next"></span></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;End single blog post&ndash;&gt;-->
+<!--            &lt;!&ndash;Start single blog post&ndash;&gt;-->
+<!--            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">-->
+<!--                <div class="single-blog-post style2 text-center">-->
+<!--                    <div class="img-holder">-->
+<!--                        <img src="../statics/images/blog/lat-blog-v2-3.jpg" alt="Awesome Image">-->
+<!--                        <div class="date-box">-->
+<!--                            <span>05.08.2018</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="text-holder">-->
+<!--                        <h3 class="blog-title"><a href="blog-single.html">Is The Computer Repair Industry Growing or Declining?</a></h3>   -->
+<!--                        <div class="meta-box">-->
+<!--                            <ul class="meta-info">-->
+<!--                                <li><a href="#">By Venanda in <span>Maintenance</span></a></li>-->
+<!--                            </ul>    -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="overlay-style-one">-->
+<!--                        <div class="box">-->
+<!--                            <div class="content">-->
+<!--                                <p>How this mistaken idea denouncing pleasure praising pain was born get some will give you complete account of that system and expound.</p>-->
+<!--                                <a class="btn-two readmore" href="#">Read More<span class="flaticon-next"></span></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;End single blog post&ndash;&gt;-->
+<!--        </div>-->
+<!--        -->
+<!--    </div>-->
+<!--</section>-->
+<!--&lt;!&ndash;End latest blog area&ndash;&gt;             -->
+
+
+<!--&lt;!&ndash;Start Brand area style2&ndash;&gt;  -->
+<!--<section class="brand-area style2">-->
+<!--    <div class="container">-->
+<!--        <div class="sec-title text-center">-->
+<!--            <div class="inner clr2"><span class="clr2">Partners</span></div>-->
+<!--            <div class="title clr2">Our trusted brands</div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <ul class="brand">-->
+<!--                    &lt;!&ndash;Start single item&ndash;&gt;-->
+<!--                    <li class="single-item">-->
+<!--                        <a href="#"><img src="../statics/images/brand/1.png" alt="Awesome Brand Image"></a>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;End single item&ndash;&gt;-->
+<!--                    &lt;!&ndash;Start single item&ndash;&gt;-->
+<!--                    <li class="single-item">-->
+<!--                        <a href="#"><img src="../statics/images/brand/2.png" alt="Awesome Brand Image"></a>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;End single item&ndash;&gt;-->
+<!--                    &lt;!&ndash;Start single item&ndash;&gt;-->
+<!--                    <li class="single-item">-->
+<!--                        <a href="#"><img src="../statics/images/brand/3.png" alt="Awesome Brand Image"></a>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;End single item&ndash;&gt;-->
+<!--                    &lt;!&ndash;Start single item&ndash;&gt;-->
+<!--                    <li class="single-item">-->
+<!--                        <a href="#"><img src="../statics/images/brand/4.png" alt="Awesome Brand Image"></a>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;End single item&ndash;&gt;-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--&lt;!&ndash;End Brand area style2&ndash;&gt;           -->
+  
+<!--Start footer area-->  
+<footer class="footer-area style2">
+    <div class="container">
+        <div class="row">
+            <!--Start single footer widget-->
+            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                <div class="single-footer-widget marbtm50">
+                    <div class="title">
+                        <h3>和我们取得联系</h3>
+                    </div>
+                    <div class="state-select-box">
+                        <div class="state-content">
+							<div class="state" id="value1">
+								<ul>
+									<li>
+									    <div class="icon">
+									        <span class="flaticon-global"></span>
+									    </div>
+									    <div class="text">
+									        <p>上海市杨浦区国定路777号</p>
+									    </div>
+									</li>
+									<li class="inline">
+									    <div class="icon">
+									        <span class="flaticon-phone"></span>
+									    </div>
+									    <div class="text">
+									        <p>+86 134-6173-7001</p>
+									    </div>
+									</li>
+									<li class="inline last">
+									    <div class="icon">
+									        <span class="flaticon-mail"></span>
+									    </div>
+									    <div class="text">
+									        <p>houchaochuan@foxmail.com</p>
+									    </div>
+									</li>
+									<li>
+									    <div class="icon">
+									        <span class="flaticon-clock"></span>
+									    </div>
+									    <div class="text">
+									        <p>Monday - Saturday : 8:30am to 5.00pm</p>
+									    </div>
+									</li>
+								</ul>
+							</div>
+						</div>   
+                    </div>
+                </div>
+            </div>
+            <!--End single footer widget-->
+            <!--Start single footer widget-->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                <div class="single-footer-widget margin-left">
+                    <div class="title">
+                        <h3>快速链接</h3>
+                    </div>
+                    <ul class="quick-links">
+                        <li><a href="{% url 'home' %}"><i class="fa fa-angle-double-right"></i>首页</a></li>
+                        <li><a href="{% url 'service1' %}"><i class="fa fa-angle-double-right"></i>在线训练</a></li>
+                        <li><a href="{% url 'adbench' %}"><i class="fa fa-angle-double-right"></i>ADBench</a></li>
+                        <li><a href="{% url 'adgym' %}"><i class="fa fa-angle-double-right"></i>ADGym</a></li>
+                        <li><a href="{% url 'contact' %}"><i class="fa fa-angle-double-right"></i>联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--End single footer widget-->
+        </div>
+    </div>
+</footer>   
+<!--End footer area-->
+
+<!--Start footer bottom area-->
+<section class="footer-bottom-area style2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="inner text-center">
+                    <div class="footer-logo">
+                        <a href="{% url 'home' %}">
+                            <img src="/static/images/resources/logo_90.png" alt="Awesome Logo">
+                        </a>    
+                    </div>
+                    <div class="copyright-text">
+                        <p>Copyrights © 2023-2024 <a class="thm-clr" href="{% url 'home' %}"><span>ADCat</span></a> .All rights reserved.</p>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>    
+</section>
+<!--End footer bottom area-->   
+
+</div>  
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-double-up"></span></div>
+
+<!-- Color Palate / Color Switcher -->
+<div class="color-palate">
+    <div class="color-trigger">
+        <i class="fa fa-gear"></i>
+    </div>
+    <div class="color-palate-head">
+        <h6>Choose Your Color</h6>
+    </div>
+    <div class="various-color clearfix">
+        <div class="colors-list">
+            <span class="palate default-color active" data-theme-file="/static/css/color-themes/default-theme.css"></span>
+            <span class="palate teal-color" data-theme-file="/static/css/color-themes/teal-theme.css"></span>
+            <span class="palate navy-color" data-theme-file="/static/css/color-themes/navy-theme.css"></span>
+            <span class="palate yellow-color" data-theme-file="/static/css/color-themes/yellow-theme.css"></span>
+            <span class="palate blue-color" data-theme-file="/static/css/color-themes/blue-theme.css"></span>
+            <span class="palate purple-color" data-theme-file="/static/css/color-themes/purple-theme.css"></span>
+            <span class="palate olive-color" data-theme-file="/static/css/color-themes/olive-theme.css"></span>
+            <span class="palate red-color" data-theme-file="/static/css/color-themes/red-theme.css"></span>
+        </div>
+    </div>
+    <div class="palate-foo">
+        <span>You can easily change and switch the colors.</span>
+    </div>
+</div>
+<!-- /.End Of Color Palate -->
+
+<!-- main jQuery -->
+<script src="/static/js/jquery.js"></script>
+<!-- Wow Script -->
+<script src="/static/js/wow.min.js"></script>
+<!-- bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- bx slider -->
+<script src="/static/js/jquery.bxslider.min.js"></script>
+<!-- count to -->
+<script src="/static/js/jquery.countTo.js"></script>
+<script src="/static/js/jquery.appear.js"></script>
+<!-- owl carousel -->
+<script src="/static/js/owl.js"></script>
+<!-- validate -->
+<script src="/static/js/validation.js"></script>
+<!-- mixit up -->
+<script src="/static/js/jquery.mixitup.min.js"></script>
+<!-- isotope script-->
+<script src="/static/js/isotope.js"></script>
+<!-- Easing -->
+<script src="/static/js/jquery.easing.min.js"></script>
+<!-- Gmap helper -->
+<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyAHzPSV2jshbjI8fqnC_C4L08ffnj5EN3A"></script>
+<!--Gmap script-->
+<script src="/static/js/gmaps.js"></script>
+<script src="/static/js/map-helper.js"></script>
+<!-- jQuery ui js -->
+<script src="/static/assets/jquery-ui-1.11.4/jquery-ui.js"></script>
+<!-- Language Switche  -->
+<script src="/static/assets/language-switcher/jquery.polyglot.language.switcher.js"></script>
+<!-- jQuery timepicker js -->
+<script src="/static/assets/timepicker/timePicker.js"></script>
+<!-- Bootstrap select picker js -->
+<script src="/static/assets/bootstrap-sl-1.12.1/bootstrap-select.js"></script>
+<!-- html5lightbox js -->                              
+<!--<script src="assets/html5lightbox/html5lightbox.js"></script>-->
+<!--Color Switcher-->
+<script src="/static/js/color-settings.js"></script>
+
+<!--Revolution Slider-->
+<script src="/static/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/static/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/static/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/static/js/main-slider-script.js"></script>
+
+<!-- thm custom script -->
+<script src="/static/js/custom.js"></script>
+
+
+
+</body>
+</html>

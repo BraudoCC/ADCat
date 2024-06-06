@@ -1,0 +1,34 @@
+Metrics-lossfunction-isEnsemble-isRefine-*,,,
+AUCPR-mse-False-False-meta-dl-end2end-gat-1000,0.593466801,,数据集列表
+AUCPR-mse-False-False-meta-dl-twostage-gat-1000,0.615939501,,"('40_vowels', 1, 5)"
+AUCPR-mse-True-False-meta-dl-end2end-gat-1000,0.602699123,,"('47_yeast', 1, 5)"
+AUCPR-mse-True-False-meta-dl-twostage-gat-1000,0.597430563,,"('20_letter', 1, 5)"
+AUCPR-pearson-False-False-meta-dl-end2end-gat-1000,0.5512758,,"('6_cardio', 1, 5)"
+AUCPR-pearson-False-False-meta-dl-twostage-gat-1000,0.586438905,,"('12_fault', 1, 5)"
+AUCPR-pearson-True-False-meta-dl-end2end-gat-1000,0.612626124,,"('17_InternetAds', 1, 5)"
+AUCPR-mse-False-meta-dl-twostage-mlp-1000,0.592347471,,"('7_Cardiotocography', 1, 5)"
+AUCPR-mse-True-meta-dl-twostage-mlp-1000,0.599570455,,"('38_thyroid', 1, 5)"
+AUCPR-pearson-True-meta-dl-end2end-mlp-1000,0.612538477,,"('44_Wilt', 1, 5)"
+AUCPR-pearson-True-meta-dl-twostage-mlp-1000,0.587016424,,"('28_pendigits', 1, 5)"
+AUCPR-meta-ml-XGBoost-True-False-1000,0.620412833,,"('24_mnist', 1, 5)"
+AUCPR-meta-ml-CatBoost-True-False-10000,0.613080334,,"('36_speech', 1, 5)"
+AUCPR-meta-ml-XGBoost-True-False-10000,0.650972501,,"('41_Waveform', 1, 5)"
+AUCPR-mse-True-False-meta-dl-twostage-mlp-10000,0.584988475,,"('31_satimage-2', 1, 5)"
+AUCPR-mse-True-False-meta-dl-twostage-gat-10000,0.617741921,,"('26_optdigits', 1, 5)"
+GANomaly,0.287068298,,"('35_SpamBase', 1, 5)"
+REPEN,0.529386722,,"('27_PageBlocks', 1, 5)"
+DeepSAD,0.365958272,,"('25_musk', 1, 5)"
+DevNet,0.489550448,,"('19_landsat', 1, 5)"
+PReNet,0.578206688,,
+FEAWAD,0.535790004,,
+XGBOD,0.542857798,,
+LR,0.553769671,,
+NB,0.505290099,,
+SVM,0.331672452,,
+MLP,0.485149238,,
+RF,0.422791101,,
+LGB,0.496977785,,
+XGB,0.529838274,,
+CatB,0.612035934,,
+ResNet,0.403804819,,
+FTTransformer,0.511673207,,
