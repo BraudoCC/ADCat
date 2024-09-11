@@ -261,8 +261,17 @@ def run(test_dataset_path: str=None,):
         meta.meta_fit() # fit meta-predictor
 
     best_pipeline = meta.meta_predict()
+    
+    num_normal_train = len(meta.test_dataset_df['label'].values) - sum(meta.test_dataset_df['label'].values)
+    
+    if best_pipeline['batch_resample'] is True and best_pipeline['batch_size'] > num_normal_train:
+        best_pipeline['batch_size'] = int(num_normal_train)
 
     fit_time, score_test = meta.predict_gym(best_pipeline)
+    # scaler = MinMaxScaler()
+    # score_test = score_test.reshape(-1,1)
+    # score_test = scaler.fit_transform(score_test).flatten()
+    score_test = [round(num, 3) for num in score_test]
 
     best_pipeline_list = list(best_pipeline.values())
 

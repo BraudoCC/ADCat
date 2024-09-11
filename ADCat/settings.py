@@ -26,8 +26,17 @@ SECRET_KEY = "django-insecure-$my6^=wegaaj_mz82oh5or)isc!jromf1kp&wx*_%ir#pu5#qq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '43.128.68.35']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '43.155.173.42','.adgym.online']
 
+# CSRF_TRUSTED_ORIGINS = ['http://43.155.173.42','http://www.adgym.online','http://43.155.173.42:39974','http://www.adgym.online:33794']
+CSRF_TRUSTED_ORIGINS = [
+    'http://43.155.173.42',
+    'http://www.adgym.online',
+    'https://43.155.173.42',
+    'https://www.adgym.online',
+    'http://43.155.173.42:39974',
+    'http://www.adgym.online:33794'
+]
 
 # Application definition
 
