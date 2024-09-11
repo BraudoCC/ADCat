@@ -14,6 +14,13 @@
 
 </head>
 <body>
+{% if messages %}
+<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
         <div class="relative min-h-screen flex">
             <div
                 class="
@@ -63,7 +70,7 @@
                             ADCat
                         </div>
                         <div class="sm:text-sm xl:text-md text-gray-200 font-normal">
-                            欢迎来到ADCat,开始为你的数据开始异常检测吧
+                            ADCat,异常检测一键式部署平台
                         </div>
                     </div>
                     <ul class="circles">
