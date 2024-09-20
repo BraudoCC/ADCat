@@ -25,5 +25,7 @@ urlpatterns = [
     path('adbench_result/', views.show_result),
     path('service1_result/', views.service1_result),
     path('adgym_re1/', views.adgym_re1),
-    path('adgym_re2/', views.adgym_re2, name='adgym_goon')
+    path('adgym_re2/', views.adgym_re2, name='adgym_goon'),
+    path('download_file_adbench/', views.download_file_adbench, name='download_file_adbench'),
+    path('download_file_adgym/', views.download_file_adgym, name='download_file_adgym')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

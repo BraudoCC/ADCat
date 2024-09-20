@@ -14,7 +14,7 @@ user = 'www'
 worker_class = 'sync'
 
 # 绑定的ip与端口
-bind = '0.0.0.0:39974' 
+bind = '0.0.0.0:33794' 
 
 # 设置进程文件目录（用于停止服务和重启服务，请勿删除）
 pidfile = '/www/wwwroot/ADCat/gunicorn.pid'

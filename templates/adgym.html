@@ -85,9 +85,9 @@
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="inner-content clearfix">
                     <div class="header-style2-logo float-left">
-                        <a href="{% url 'home' %}">
                             <img src="/static/images/resources/logo_60.png" alt="Awesome Logo">
-                        </a>
+                            <img src="/static/images/resources/AILAB_logo.png" alt="Awesome Logo">
+                            <img src="/static/images/resources/ALLAB_code.png" alt="Awesome Logo">
                     </div>
                     <div class="headers2-header-right float-right">
                         <ul>
@@ -216,16 +216,33 @@
 {#            </div>#}
         </div>
 
-        <div style="height:450px;width:1200px"></div>
+{#        <div style="height:450px;width:1200px"></div>#}
 
-        <form action="/adgym_re1/" method="POST" enctype="multipart/form-data" class="adbench2_input">
+{#        <form action="/adgym_re1/" method="POST" enctype="multipart/form-data" class="adbench2_input">#}
         {#   class="adbench_input"#}
-            {% csrf_token %}
-            <input type="file" id="fileinp" name="adgym_file" accept=".csv,.xlsx" multiple>
-            <p >拖拽文件或者点击这个区域.(接受.csv文件)</p>
-            <div class="spacer-50"></div>
+{#            {% csrf_token %}#}
+{#            <input type="file" id="fileinp" name="adgym_file" accept=".csv,.xlsx" multiple>#}
+{#            <p >拖拽文件或者点击这个区域.(接受.csv文件)</p>#}
+{#            <div class="spacer-50"></div>#}
+{##}
+{#            <button type="submit" class="btn-two">上传数据</button>#}
+{#        </form>#}
 
-            <button type="submit" class="btn-two">上传数据</button>
+        <form action="/adgym_re1/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" id="fileinp" name="adgym_file" style="position:relative;left:48%;" accept=".csv" multiple>
+        <div class="spacer-50"></div>
+        <button type="submit" style="
+        background-color: #f44336;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        position:relative;
+        left:48%;">上传文件</button>
         </form>
     </div>
 </section>
@@ -279,7 +296,7 @@
 									        <span class="flaticon-phone"></span>
 									    </div>
 									    <div class="text">
-									        <p>200433</p>
+									        <p>SUFE AI Lab</p>
 									    </div>
 									</li>
 									<li class="inline last">

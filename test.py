@@ -53,7 +53,7 @@ def adbench_cal(filename, algo, islabel):
     :return: score分数
     '''
 
-    default_road = 'media/'  # 文件存储的相对路径
+    default_road = 'media/adbench/'  # 文件存储的相对路径
     load_path = default_road + str(filename)  # 加上文件名就是打开文件的路径
     if load_path.endswith(".xlsx"):
         X = pd.read_excel(load_path, sheet_name='Sheet1')

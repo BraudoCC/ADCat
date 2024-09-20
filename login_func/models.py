@@ -4,8 +4,8 @@ from django.db import models
 
 
 class UserInfo(models.Model):
-    email = models.EmailField(max_length=20)
-    password = models.CharField(max_length=20)
+    email = models.EmailField(max_length=200)
+    password = models.CharField(max_length=200)
 
 
 from datetime import datetime
@@ -17,7 +17,7 @@ class EmailVeriRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name='验证码')
 
     # 用户邮箱
-    email = models.EmailField(max_length=250, verbose_name='用户邮箱')
+    email = models.EmailField(max_length=200, verbose_name='用户邮箱')
 
     # datetime.now 在创建对象的时候, 再执行函数获取时间
     # 发送时间

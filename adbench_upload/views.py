@@ -3,10 +3,12 @@ import numpy as np
 from django.shortcuts import render
 from django.http import HttpResponse
 import os
+import stat
 from .models import *
 import openpyxl
 import csv
 from test import adbench_cal, service1_cal, run_adgym
+# from django.contrib import messages
 
 
 # Create your views here.
@@ -17,7 +19,7 @@ def upload_file(request):
         # algo = request.POST.get('choose_algo')
         if not myfile:
             return HttpResponse("no files for upload!")
-        destination = open(os.path.join("media/", myfile.name), 'wb+')    # 打开特定的文件进行二进制的写操作
+        destination = open(os.path.join("media/adbench/", myfile.name), 'wb+')    # 打开特定的文件进行二进制的写操作
         for chunk in myfile.chunks():      # 分块写入文件
             destination.write(chunk)
         destination.close()
@@ -33,7 +35,7 @@ def upload_file(request):
         # wb = openpyxl.load_workbook(myfile)
 
         # 读取用户上传的数据
-        default_road = 'media/'  # 文件存储的相对路径
+        default_road = 'media/adbench/'  # 文件存储的相对路径
         load_path = default_road + str(myfile.name)  # 加上文件名就是打开文件的路径
         if load_path.endswith(".xlsx"):
             wb = openpyxl.load_workbook(myfile)
@@ -97,12 +99,14 @@ def show_result(request):
 
 
     # 读取用户上传的数据
-    default_road = 'media/'  # 文件存储的相对路径
+    default_road = 'media/adbench/'  # 文件存储的相对路径
     load_path = default_road + str(filename)  # 加上文件名就是打开文件的路径
     if load_path.endswith(".xlsx"):
         df = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
         df = pd.read_csv(load_path)
+    # 设定文件权限为可读可写
+    os.chmod(load_path, 0o666)
 
     # 根据用户选择的：不入模的列，删除指定列（这里以列名为索引；如果用列号索引，会隔列删除，永动机删除）
     # notselected = [int(x) for x in notselected]
@@ -198,6 +202,8 @@ def service1_result(request):
     # 再次更新数据（这一次加上anomaly score）,重新存储excel
     new_file_name = f'{filename}'  # 更新的文件名：和原文件名字相同
     file_path = os.path.join(default_road, new_file_name)
+    # 设定文件权限为可读可写
+    os.chmod(file_path, 0o666)
     if file_path.endswith(".xlsx"):
         df.to_excel(file_path, index=False)  # index=True是保留索引列，False不保留
         # 读取更新后的数据
@@ -277,6 +283,9 @@ def adgym_re1(request):
     user_email = request.session.get('user_email', None)
     # 存储文件名
     filename = myfile.name
+    # 暂时不存anomaly_score
+    anomaly_score = 'xxx'.encode('utf-8')
+    
     # 存入表adgym_info
     adgym_info.objects.create(user_email=user_email, file=filename, best_pipeline=best_pipeline_list, fit_time=fit_time,
                               anomaly_score=anomaly_score)
@@ -285,6 +294,8 @@ def adgym_re1(request):
     # 读取用户上传的数据
     default_road = 'media/adgym/'  # 文件存储的相对路径
     load_path = default_road + str(myfile.name)  # 加上文件名就是打开文件的路径
+    # 设定文件权限为可读可写
+    os.chmod(load_path, 0o666)
     if load_path.endswith(".xlsx"):
         wb = openpyxl.load_workbook(myfile)
         # 获得excel的第一张表
@@ -418,3 +429,26 @@ def adgym_re2(request):
                   'optimizer_name':optimizer_name,'batch_resample':batch_resample,
                   'epochs':epochs,'batch_size':batch_size,'lr':lr,'weight_decay':weight_decay, 'time': fit_time})
 
+
+def download_file_adbench(request):
+    default_path = 'media/adbench/'
+    latest_data = AdbenchUpload.objects.last()
+    filename = latest_data.file
+    load_path = default_path + str(filename)
+
+    with open(load_path, 'rb') as f:
+        response = HttpResponse(f.read(), content_type='application/octet-stream')
+        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(load_path)
+        return response
+
+
+def download_file_adgym(request):
+    default_path = 'media/adgym/'
+    latest_data = adgym_info.objects.last()
+    filename = latest_data.file
+    load_path = default_path + str(filename)
+
+    with open(load_path, 'rb') as f:
+        response = HttpResponse(f.read(), content_type='application/octet-stream')
+        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(load_path)
+        return response
