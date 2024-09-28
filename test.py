@@ -58,7 +58,10 @@ def adbench_cal(filename, algo, islabel):
     if load_path.endswith(".xlsx"):
         X = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
-        X = pd.read_csv(load_path,encoding='gbk')
+        try:
+            X = pd.read_csv(load_path,encoding='gbk')
+        except:
+            X = pd.read_csv(load_path)
     # X_train = pd.read_excel(load_path, sheet_name='Sheet1')
     # islabel = int(islabel)-1  # 由于"无标签"占位，计数取value从1开始，要减1
     if islabel == "无标签":  # 若选的是无标签
@@ -225,6 +228,7 @@ def adbench_cal(filename, algo, islabel):
 
     features_num = X_train.shape[1]
     nums = X_train.shape[0]
+    score = (score - np.mean(score)) / (np.std(score) + 1e-6)
     score = np.array([round(x,3) for x in score])
     return score, features_num, nums
 
@@ -242,7 +246,10 @@ def service1_cal(filename):
     if load_path.endswith(".xlsx"):
         X_train = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
-        X_train = pd.read_csv(load_path,encoding='gbk')
+        try:
+            X_train = pd.read_csv(load_path,encoding='gbk')
+        except:
+            X_train = pd.read_csv(load_path)
     X = X_train.values
     # 不管数据什么类型，直接上KNN
     clf = IsolationForest(n_estimators=80,

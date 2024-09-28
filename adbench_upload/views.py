@@ -60,7 +60,10 @@ def upload_file(request):
         elif load_path.endswith(".csv"):
             # csv_file = open(load_path, 'r', newline='', encoding='utf-8')
             # reader = csv.reader(csv_file)
-            csvfile = pd.read_csv(load_path,encoding='gbk')
+            try:
+                csvfile = pd.read_csv(load_path,encoding='gbk')
+            except:
+                csvfile = pd.read_csv(load_path)
             data = csvfile.values[:, :]
             # 获取第一行，作为table的thead
             order1 = np.array(csvfile.columns)
@@ -104,7 +107,10 @@ def show_result(request):
     if load_path.endswith(".xlsx"):
         df = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
-        df = pd.read_csv(load_path,encoding='gbk')
+        try:
+            df = pd.read_csv(load_path,encoding='gbk')
+        except:
+            df = pd.read_csv(load_path)
     # 设定文件权限为可读可写
     os.chmod(load_path, 0o666)
 
@@ -155,7 +161,10 @@ def show_result(request):
             excel_data.append(row_data)
     elif file_path.endswith(".csv"):
         df.to_csv(file_path, index=False)
-        csvfile = pd.read_csv(file_path,encoding='gbk')
+        try:
+            csvfile = pd.read_csv(file_path,encoding='gbk')
+        except:
+            csvfile = pd.read_csv(file_path)
         data = csvfile.values[:, :]
         # 获取第一行，作为table的thead
         order1 = np.array(csvfile.columns)
@@ -191,7 +200,10 @@ def service1_result(request):
     if load_path.endswith(".xlsx"):
         df = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
-        df = pd.read_csv(load_path,encoding='gbk')
+        try:
+            df = pd.read_csv(load_path,encoding='gbk')
+        except:
+            df = pd.read_csv(load_path)
 
     # 使用test.py中的service1_cal函数，计算得到anomaly score
     anomaly_score, anomaly_num, features_num, nums = service1_cal(filename)
@@ -225,7 +237,10 @@ def service1_result(request):
             excel_data.append(row_data)
     elif file_path.endswith(".csv"):
         df.to_csv(file_path, index=False)
-        csvfile = pd.read_csv(file_path,encoding='gbk')
+        try:
+            csvfile = pd.read_csv(file_path,encoding='gbk')
+        except:
+            csvfile = pd.read_csv(file_path)
         data = csvfile.values[:, :]
         # 获取第一行，作为table的thead
         order1 = np.array(csvfile.columns)
@@ -315,7 +330,10 @@ def adgym_re1(request):
             excel_data.append(row_data)
 
     elif load_path.endswith(".csv"):
-        csvfile = pd.read_csv(load_path,encoding='gbk')
+        try:
+            csvfile = pd.read_csv(load_path,encoding='gbk')
+        except:
+            csvfile = pd.read_csv(load_path)
         data = csvfile.values[:, :]
         # 获取第一行，作为table的thead
         order1 = np.array(csvfile.columns)
@@ -357,7 +375,10 @@ def adgym_re2(request):
     if load_path.endswith(".xlsx"):
         df = pd.read_excel(load_path, sheet_name='Sheet1')
     elif load_path.endswith(".csv"):
-        df = pd.read_csv(load_path,encoding='gbk')
+        try:
+            df = pd.read_csv(load_path,encoding='gbk')
+        except:
+            df = pd.read_csv(load_path)
 
     # 使用test.py中的run_adgym函数，计算得到best_pipeline, fit_time, score
     best_pipeline_list, fit_time, anomaly_score = run_adgym(filename)
@@ -406,7 +427,10 @@ def adgym_re2(request):
             excel_data.append(row_data)
     elif file_path.endswith(".csv"):
         df.to_csv(file_path, index=False)
-        csvfile = pd.read_csv(file_path,encoding='gbk')
+        try:
+            csvfile = pd.read_csv(file_path,encoding='gbk')
+        except:
+            csvfile = pd.read_csv(file_path)
         data = csvfile.values[:, :]
         # 获取第一行，作为table的thead
         order1 = np.array(csvfile.columns)

@@ -165,7 +165,10 @@ class meta_custom():
         if self.test_dataset_path.endswith(".xlsx"):
             self.test_dataset_df = pd.read_excel(self.test_dataset_path, sheet_name='Sheet1')
         elif self.test_dataset_path.endswith(".csv"):
-            self.test_dataset_df = pd.read_csv(self.test_dataset_path)
+            try:
+                self.test_dataset_df = pd.read_csv(self.test_dataset_path,encoding='gbk')
+            except:
+                self.test_dataset_df = pd.read_csv(self.test_dataset_path)
         y = self.test_dataset_df['label'].values
         X = self.test_dataset_df.drop('label', axis=1).values
         self.test_la = sum(y)
